@@ -79,6 +79,7 @@ public class ExperimentScript : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && alreadyInput){
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
@@ -132,6 +133,9 @@ public class ExperimentScript : MonoBehaviour
             initializedTrialPool = true;
 
             //HACK: wrote result column names here because this code is executed only once at the start
+           //This spot turned out to be a haven to maintain data between trials
+            resultWriter = new StreamWriter("Assets/Results/" +SharedData._participantID + ".txt");
+            resultWriter.WriteLine(SharedData._participantID +" by " +SharedData._experimenterName + " @ " + SharedData._expTime);
             resultWriter.WriteLine("TrialNumber,Correctness,Actual,Response,Time");
 
             System.Random rnd = new System.Random();
@@ -158,7 +162,7 @@ public class ExperimentScript : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        if(resultWriter.BaseStream != null) resultWriter.Close();
+        if (resultWriter.BaseStream != null) resultWriter.Close();
     }
 
     void OnDrawGizmosSelected()

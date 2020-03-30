@@ -1,0 +1,5 @@
+c0001 by Hamza @ 2200
+TrialNumber,Correctness,Actual,Response,Time
+s2,correct,True,True,1.43
+s1,incorrect,True,False,0.20
+s3,incorrect,False,True,0.17
